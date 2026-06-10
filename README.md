@@ -1,16 +1,88 @@
-# React + Vite
+# finance-manager
+Personal finance manager — track income, expenses, budgets, and savings goals. Built with React, Tailwind, and Supabase.
+# Finance Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal finance manager to track income, expenses, budgets, and savings goals — with an analytics dashboard that turns raw transactions into clear insights.
 
-Currently, two official plugins are available:
+🔗 **Live demo:** _coming soon_ · 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🎨 **Figma file:** (https://www.figma.com/design/HlAHMMO5ElTNkXm1vPNc4d/Finance-mannger?m=auto&t=8ST4aKewDtI4klG1-1)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- **Authentication** — secure sign-up and login, each user sees only their own data
+- **Transactions** — add, filter, and delete income and expense records
+- **Budgets** — set monthly limits per category with visual progress and over-budget warnings
+- **Savings goals** — track progress toward targets with deadlines
+- **Analytics dashboard** — category breakdown, income-vs-expense trends, and monthly spending charts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Screens
+
+### Dashboard
+![Dashboard](Desighn/Desihgn/dashboard.jpg)
+
+### Transactions
+![Transactions](Desighn/Desihgn/transactions.jpg)
+
+### Budgets
+![Budgets](Desighn/Desihgn/budgets.jpg)
+
+### Savings goals
+![Savings goals](Desighn/Desihgn/goals.jpg)
+
+### Analytics
+![Analytics](Desighn/Desihgn/analytics.jpg)
+
+---
+
+## Tech stack
+
+| Layer | Technology |
+|----------|-------------|
+| Frontend | React (Vite) |
+| Styling | Tailwind CSS |
+| Backend / DB | Supabase (PostgreSQL + Auth) |
+| Charts | Recharts |
+| Deployment | Vercel |
+
+---
+
+## Design process
+
+This project started with a design phase before any code was written:
+
+1. **User flow** — mapped the journey from sign-up through the four core screens.
+2. **Wireframes** — low-fidelity layouts to decide structure before visuals.
+3. **Design system** — a single set of colors, typography, and components reused across every screen.
+4. **High-fidelity mockups** — the visual target the build was measured against.
+
+**Key decisions:** income is shown in green and expenses in rose *consistently* across the whole app to reduce the effort of scanning; budget status is shown two ways (color **and** label) so it works for colorblind users; and the add-transaction form is a modal to keep users in context.
+
+Full wireframes and mockups are in the [Figma file](https://www.figma.com/design/HlAHMMO5ElTNkXm1vPNc4d/Finance-mannger?m=auto&t=8ST4aKewDtI4klG1-1) and in `Desighn`.
+
+---
+
+
+## Project status
+
+🚧 In active development. Built over one week as a portfolio project.
+
+- [x] Project setup (Vite + React + Tailwind)
+- [x] Supabase auth
+- [ ] Transactions
+- [ ] Budgets
+- [ ] Savings goals
+- [ ] Analytics dashboard
+- [ ] Deployment
+
+---
+
+## Author
+
+Built by **Hansaka R Bandara** 
+
+- GitHub: [HΞNSKΛ™](https://github.com/Hansaka-co)
