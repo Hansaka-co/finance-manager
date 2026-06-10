@@ -1,5 +1,3 @@
-# finance-manager
-Personal finance manager — track income, expenses, budgets, and savings goals. Built with React, Tailwind, and Supabase.
 # Finance Manager
 
 A personal finance manager to track income, expenses, budgets, and savings goals — with an analytics dashboard that turns raw transactions into clear insights.
