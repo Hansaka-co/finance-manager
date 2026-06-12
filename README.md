@@ -71,7 +71,7 @@ Full wireframes and mockups are in the [Figma file](https://www.figma.com/design
 
 - [x] Project setup (Vite + React + Tailwind)
 - [x] Supabase auth
-- [ ] Transactions
+- [x] Transactions
 - [ ] Budgets
 - [ ] Savings goals
 - [ ] Analytics dashboard
