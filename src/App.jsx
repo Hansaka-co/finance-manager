@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
 import Auth from './Auth'
 import Transactions from './Transactions'
+import Budgets from './Budgets'
+
 
 function App() {
   const [session, setSession] = useState(null)
+  const [view, setView] = useState('transactions')
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session))
@@ -32,7 +35,23 @@ return (
           </button>
         </div>
       </header>
-      <Transactions />
+
+      <nav className="bg-white border-b border-slate-200 px-6 flex gap-1">
+        <button
+          onClick={() => setView('transactions')}
+          className={`px-4 py-3 text-sm font-medium border-b-2 ${view === 'transactions' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500'}`}
+        >
+          Transactions
+        </button>
+        <button
+          onClick={() => setView('budgets')}
+          className={`px-4 py-3 text-sm font-medium border-b-2 ${view === 'budgets' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500'}`}
+        >
+          Budgets
+        </button>
+      </nav>
+
+      {view === 'transactions' ? <Transactions /> : <Budgets />}
     </div>
   )
 }
