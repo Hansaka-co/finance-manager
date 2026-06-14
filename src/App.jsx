@@ -3,6 +3,7 @@ import { supabase } from './supabaseClient'
 import Auth from './Auth'
 import Transactions from './Transactions'
 import Budgets from './Budgets'
+import Goals from './Goals'
 
 
 function App() {
@@ -49,9 +50,18 @@ return (
         >
           Budgets
         </button>
+        <button
+          onClick={() => setView('goals')}
+          className={`px-4 py-3 text-sm font-medium border-b-2 ${view === 'goals' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500'}`}
+        >
+          Goals
+        </button>
       </nav>
 
-      {view === 'transactions' ? <Transactions /> : <Budgets />}
+      {view === 'transactions' && <Transactions />}
+      {view === 'budgets' && <Budgets />}
+      {view === 'goals' && <Goals />}
+
     </div>
   )
 }
