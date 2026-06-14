@@ -7,6 +7,7 @@ function Goals() {
   const [target, setTarget] = useState('')
   const [deadline, setDeadline] = useState('')
   const [loading, setLoading] = useState(false)
+  const [amounts, setAmounts] = useState({})
 
   useEffect(() => {
     fetchGoals()
@@ -35,6 +36,26 @@ function Goals() {
       fetchGoals()
     }
     setLoading(false)
+  }
+  async function addMoney(goal) {
+    const extra = parseFloat(amounts[goal.id])
+    if (!extra || extra <= 0) return
+
+    const newSaved = Number(goal.saved_amount) + extra
+    const { error } = await supabase
+      .from('savings_goals')
+      .update({ saved_amount: newSaved })
+      .eq('id', goal.id)
+
+    if (!error) {
+      setAmounts({ ...amounts, [goal.id]: '' })
+      fetchGoals()
+    }
+  }
+
+  async function deleteGoal(id) {
+    const { error } = await supabase.from('savings_goals').delete().eq('id', id)
+    if (!error) fetchGoals()
   }
 
   return (
@@ -100,6 +121,27 @@ function Goals() {
                     className={`h-full rounded-full ${done ? 'bg-green-500' : 'bg-teal-500'}`}
                     style={{ width: `${pct}%` }}
                   />
+                </div>
+                <div className="flex gap-2 mt-3">
+                  <input
+                    type="number"
+                    placeholder="Add amount"
+                    value={amounts[g.id] || ''}
+                    onChange={(e) => setAmounts({ ...amounts, [g.id]: e.target.value })}
+                    className="flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm"
+                  />
+                  <button
+                    onClick={() => addMoney(g)}
+                    className="bg-teal-600 text-white rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-teal-700"
+                  >
+                    Add
+                  </button>
+                  <button
+                    onClick={() => deleteGoal(g.id)}
+                    className="text-slate-300 hover:text-rose-500 text-sm px-1"
+                  >
+                    ✕
+                  </button>
                 </div>
               </div>
             )
