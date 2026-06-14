@@ -73,7 +73,7 @@ Full wireframes and mockups are in the [Figma file](https://www.figma.com/design
 - [x] Supabase auth
 - [x] Transactions
 - [x] Budgets
-- [ ] Savings goals
+- [x] Savings goals
 - [ ] Analytics dashboard
 - [ ] Deployment
 
