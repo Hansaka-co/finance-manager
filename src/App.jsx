@@ -4,6 +4,7 @@ import Auth from './Auth'
 import Transactions from './Transactions'
 import Budgets from './Budgets'
 import Goals from './Goals'
+import Analytics from './Analytics'
 
 
 function App() {
@@ -56,11 +57,20 @@ return (
         >
           Goals
         </button>
+
+        <button
+          onClick={() => setView('analytics')}
+          className={`px-4 py-3 text-sm font-medium border-b-2 ${view === 'analytics' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500'}`}
+        >
+          Analytics
+        </button>
+        
       </nav>
 
       {view === 'transactions' && <Transactions />}
       {view === 'budgets' && <Budgets />}
       {view === 'goals' && <Goals />}
+      {view === 'analytics' && <Analytics />}
 
     </div>
   )
