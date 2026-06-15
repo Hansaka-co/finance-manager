@@ -74,7 +74,7 @@ Full wireframes and mockups are in the [Figma file](https://www.figma.com/design
 - [x] Transactions
 - [x] Budgets
 - [x] Savings goals
-- [ ] Analytics dashboard
+- [x] Analytics dashboard + + sidebar/dashboard polish
 - [ ] Deployment
 
 ---
