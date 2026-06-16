@@ -94,25 +94,43 @@ function Budgets() {
             No budgets yet. Set one above.
           </p>
         ) : (
-          budgets.map((b) => {
+            budgets.map((b) => {
             const spent = spending[b.category] || 0
             const pct = Math.min((spent / b.monthly_limit) * 100, 100)
-            const over = spent > b.monthly_limit
+            const ratio = spent / b.monthly_limit
+            const over = ratio > 1
+            const approaching = ratio >= 0.8 && ratio <= 1
+
+            // Pick colors based on the three states
+            const barColor = over ? 'bg-rose-500' : approaching ? 'bg-amber-500' : 'bg-teal-500'
+            const borderColor = over ? 'border-rose-300' : 'border-slate-200'
+
             return (
-              <div key={b.id} className={`bg-white rounded-xl border p-4 ${over ? 'border-rose-300' : 'border-slate-200'}`}>
+              <div key={b.id} className={`bg-white rounded-xl border p-4 ${borderColor}`}>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-slate-800">{b.category}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-slate-800">{b.category}</span>
+                    {over && (
+                      <span className="text-xs font-medium text-rose-700 bg-rose-100 px-2 py-0.5 rounded-full">
+                        Over budget
+                      </span>
+                    )}
+                    {approaching && (
+                      <span className="text-xs font-medium text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">
+                        Approaching limit
+                      </span>
+                    )}
+                  </div>
                   <div className="flex items-center gap-3">
                     <span className={`text-xs ${over ? 'text-rose-600 font-medium' : 'text-slate-500'}`}>
                       Rs {spent.toLocaleString()} / {Number(b.monthly_limit).toLocaleString()}
-                      {over ? ' · over' : ''}
                     </span>
                     <button onClick={() => deleteBudget(b.id)} className="text-slate-300 hover:text-rose-500 text-sm">✕</button>
                   </div>
                 </div>
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div
-                    className={`h-full rounded-full ${over ? 'bg-rose-500' : 'bg-teal-500'}`}
+                    className={`h-full rounded-full ${barColor}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>
