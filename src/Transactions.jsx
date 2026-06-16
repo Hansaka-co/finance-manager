@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
+import { categoryStyle } from './categoryStyle'
 
 function Transactions() {
   const [transactions, setTransactions] = useState([])
@@ -110,10 +111,25 @@ function Transactions() {
         ) : (
           transactions.map((t) => (
             <div key={t.id} className="flex items-center justify-between p-4">
-              <div>
-                <p className="text-sm font-medium text-slate-800">{t.category}</p>
-                <p className="text-xs text-slate-400">{t.date}{t.note ? ` · ${t.note}` : ''}</p>
+            <div className="flex items-center gap-3">
+                {(() => {
+                  const s = categoryStyle(t.category)
+                  return (
+                    <div
+                      className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-semibold"
+                      style={{ backgroundColor: s.bg, color: s.text }}
+                    >
+                      {s.initials}
+                    </div>
+                  )
+                })()}
+                
+                <div>
+                  <p className="text-sm font-medium text-slate-800">{t.category}</p>
+                  <p className="text-xs text-slate-400">{t.date}{t.note ? ` · ${t.note}` : ''}</p>
+                </div>
               </div>
+
               <div className="flex items-center gap-4">
                 <span className={`text-sm font-semibold ${t.type === 'income' ? 'text-green-600' : 'text-rose-600'}`}>
                   {t.type === 'income' ? '+' : '-'} Rs {Number(t.amount).toLocaleString()}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+import { categoryStyle } from './categoryStyle'
 
 const COLORS = ['#0D9488', '#F59E0B', '#E11D48', '#8B5CF6', '#3B82F6', '#16A34A']
 
@@ -81,9 +82,22 @@ function Dashboard({ session, setView }) {
             <div className="space-y-3">
               {recent.map((t) => (
                 <div key={t.id} className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-slate-800">{t.category}</p>
-                    <p className="text-xs text-slate-400">{t.date}</p>
+                  <div className="flex items-center gap-3">
+                    {(() => {
+                      const s = categoryStyle(t.category)
+                      return (
+                        <div
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold"
+                          style={{ backgroundColor: s.bg, color: s.text }}
+                        >
+                          {s.initials}
+                        </div>
+                      )
+                    })()}
+                    <div>
+                      <p className="text-sm font-medium text-slate-800">{t.category}</p>
+                      <p className="text-xs text-slate-400">{t.date}</p>
+                    </div>
                   </div>
                   <span className={`text-sm font-semibold ${t.type === 'income' ? 'text-green-600' : 'text-rose-600'}`}>
                     {t.type === 'income' ? '+' : '-'} Rs {Number(t.amount).toLocaleString()}
