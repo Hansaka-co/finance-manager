@@ -2,7 +2,7 @@
 
 A personal finance manager to track income, expenses, budgets, and savings goals — with an analytics dashboard that turns raw transactions into clear insights.
 
-🔗 **Live demo:** _coming soon_ · 
+🔗 **Live demo:** (https://finance-manager-hansaka.vercel.app/)
 
 🎨 **Figma file:** (https://www.figma.com/design/HlAHMMO5ElTNkXm1vPNc4d/Finance-mannger?m=auto&t=8ST4aKewDtI4klG1-1)
 
@@ -75,7 +75,7 @@ Full wireframes and mockups are in the [Figma file](https://www.figma.com/design
 - [x] Budgets
 - [x] Savings goals
 - [x] Analytics dashboard + + sidebar/dashboard polish
-- [ ] Deployment
+- [x] Deployment
 
 ---
 
